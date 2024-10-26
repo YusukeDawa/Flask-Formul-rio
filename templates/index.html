@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <div class="page-header">
+        <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+    </div>
+
+    <form method="POST" class="mt-3">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.name.label(class="font-weight-bold") }}
+            {{ form.name(class="form-control", id='my-text-field') }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+{% endblock %}
