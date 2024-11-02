@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Flasky{% endblock %}</title>
+    <title>{% block title %}Avaliação contínua{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ url_for('index') }}">Flasky</a>
+        <a class="navbar-brand" href="{{ url_for('index') }}">Avaliação contínua: <b>Aula 50</b></a>
         <ul class="navbar-nav ml-3">
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('index') }}">Home</a>
             </li>
         </ul>
-        <div class="collapse navbar-collapse">
-            <!-- Espaço para outros itens no lado direito -->
-        </div>
     </nav>
     <div class="container mt-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-warning" role="alert">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
